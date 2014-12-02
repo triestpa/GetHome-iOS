@@ -12,6 +12,11 @@ import MapKit
 class MapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var refreshButton: UIButton!
+    
+    @IBAction func refreshButtonTouch(sender: AnyObject) {
+        showRouteSelectionWindow()
+    }
     
     var myRoute : MKRoute?
     
@@ -20,12 +25,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshButton.layer.cornerRadius = 10;
+        refreshButton.clipsToBounds = true;
+        
         locationHelper.startLocationUpdate()
         
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
-        
-        getDirections(locationHelper.lastLocation!)
     }
     
     override func didReceiveMemoryWarning() {
@@ -33,17 +39,18 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func getDirections(userLocation: CLLocation) {
-        var point1 = MKPointAnnotation()
-        var point2 = MKPointAnnotation()
-        
-            point1.coordinate = userLocation.coordinate
+    func getDirections() {
+        if let currentLocation = locationHelper.lastLocation? {
+            
+            var point1 = MKPointAnnotation()
+            var point2 = MKPointAnnotation()
+            
+            point1.coordinate = currentLocation.coordinate
             point1.title = "You"
             mapView.addAnnotation(point1)
             
-            point2.coordinate = CLLocationCoordinate2DMake(24.9511, 121.2358)
-            point2.title = "Chungli"
-            point2.subtitle = "Taiwan"
+            point2.coordinate = CLLocationCoordinate2DMake(47.5069, 19.0456)
+            point2.title = "Home"
             mapView.addAnnotation(point2)
             mapView.centerCoordinate = point2.coordinate
             mapView.delegate = self
@@ -57,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             directionsRequest.setSource(MKMapItem(placemark: markYou))
             directionsRequest.setDestination(MKMapItem(placemark: markHome))
-            directionsRequest.transportType = MKDirectionsTransportType.Automobile
+            directionsRequest.transportType = MKDirectionsTransportType.Walking
             var directions = MKDirections(request: directionsRequest)
             directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
                 if error == nil {
@@ -65,6 +72,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     self.mapView.addOverlay(self.myRoute?.polyline)
                 }
             }
+        }
+        else {
+            println("Last Location Not Found")
+        }
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
@@ -73,6 +84,21 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         myLineRenderer.strokeColor = UIColor.redColor()
         myLineRenderer.lineWidth = 3
         return myLineRenderer
+    }
+    
+    func showRouteSelectionWindow() {
+        let alertController = UIAlertController(title: "Take Me Home", message: nil, preferredStyle: .Alert)
+        let oneAction = UIAlertAction(title: "One", style: .Default) { (_) in }
+        let twoAction = UIAlertAction(title: "Two", style: .Default) { (_) in }
+        let threeAction = UIAlertAction(title: "Three", style: .Default) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addAction(oneAction)
+        alertController.addAction(twoAction)
+        alertController.addAction(threeAction)
+        alertController.addAction(cancelAction)
+        
+        getDirections()
     }
     
     

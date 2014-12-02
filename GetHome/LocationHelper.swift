@@ -38,12 +38,15 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         
         let newLocation = locations.last! as CLLocation
-        if newLocation.horizontalAccuracy >= 0 && newLocation.horizontalAccuracy <= locationManager.desiredAccuracy {
+        if newLocation.horizontalAccuracy >= 0 && newLocation.horizontalAccuracy >= locationManager.desiredAccuracy {
             lastLocation = newLocation
             
             println("latitude: \(newLocation.coordinate.latitude) longitude: \(newLocation.coordinate.longitude)")
             
             stopLocationUpdate()
+        }
+        else {
+            println("Location Accuracy Not Valid: " + "\(newLocation.horizontalAccuracy)")
         }
     }
     
@@ -51,5 +54,4 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
         println("Failed to get location: " + error.localizedDescription)
         stopLocationUpdate()
     }
-    
 }

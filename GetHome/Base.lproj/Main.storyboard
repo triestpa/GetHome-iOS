@@ -19,18 +19,45 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cf-aC-az3">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                             </mapView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-R9-fBq">
+                                <rect key="frame" x="188" y="65" width="225" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="4WC-Yy-XYK"/>
+                                    <constraint firstAttribute="height" constant="50" id="ASL-ys-rr7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
+                                <state key="normal" title="Take Me Home">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refreshButtonTouch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="6dF-D6-Wkh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ssE-R9-fBq" secondAttribute="centerX" id="46K-yx-Gxp"/>
+                            <constraint firstAttribute="trailing" secondItem="ssE-R9-fBq" secondAttribute="trailing" constant="59" id="6Nb-Fv-iKb"/>
+                            <constraint firstItem="ssE-R9-fBq" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="45" id="OTZ-Ph-ece"/>
                             <constraint firstItem="9cf-aC-az3" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="Pqo-pY-NJX"/>
+                            <constraint firstItem="ssE-R9-fBq" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="45" id="Tja-lc-1gU"/>
                             <constraint firstAttribute="centerX" secondItem="9cf-aC-az3" secondAttribute="centerX" id="Yhj-kQ-Gmz"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="9cf-aC-az3" secondAttribute="bottom" id="be5-gh-3gd"/>
                             <constraint firstItem="9cf-aC-az3" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="dsR-jl-6Ai"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="6Nb-Fv-iKb"/>
+                                <exclude reference="Tja-lc-1gU"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="mapView" destination="9cf-aC-az3" id="2SE-fD-iWm"/>
+                        <outlet property="refreshButton" destination="ssE-R9-fBq" id="B0u-gw-SZh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
