@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		CD0C08D51A2E425E00145508 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08D41A2E425E00145508 /* AppDelegate.swift */; };
-		CD0C08D71A2E425E00145508 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08D61A2E425E00145508 /* FirstViewController.swift */; };
-		CD0C08D91A2E425F00145508 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08D81A2E425F00145508 /* SecondViewController.swift */; };
+		CD0C08D71A2E425E00145508 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08D61A2E425E00145508 /* MapViewController.swift */; };
+		CD0C08D91A2E425F00145508 /* DirectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08D81A2E425F00145508 /* DirectionsViewController.swift */; };
 		CD0C08DC1A2E425F00145508 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0C08DA1A2E425F00145508 /* Main.storyboard */; };
 		CD0C08DE1A2E425F00145508 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD0C08DD1A2E425F00145508 /* Images.xcassets */; };
 		CD0C08E11A2E425F00145508 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD0C08DF1A2E425F00145508 /* LaunchScreen.xib */; };
 		CD0C08ED1A2E425F00145508 /* GetHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08EC1A2E425F00145508 /* GetHomeTests.swift */; };
+		CD0C08F71A2E445C00145508 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0C08F61A2E445C00145508 /* MapKit.framework */; };
+		CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08F81A2E470200145508 /* LocationHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,14 +32,16 @@
 		CD0C08CF1A2E425E00145508 /* GetHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0C08D31A2E425E00145508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0C08D41A2E425E00145508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD0C08D61A2E425E00145508 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		CD0C08D81A2E425F00145508 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		CD0C08D61A2E425E00145508 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		CD0C08D81A2E425F00145508 /* DirectionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionsViewController.swift; sourceTree = "<group>"; };
 		CD0C08DB1A2E425F00145508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CD0C08DD1A2E425F00145508 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD0C08E01A2E425F00145508 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CD0C08E61A2E425F00145508 /* GetHomeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GetHomeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0C08EB1A2E425F00145508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0C08EC1A2E425F00145508 /* GetHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeTests.swift; sourceTree = "<group>"; };
+		CD0C08F61A2E445C00145508 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CD0C08F81A2E470200145508 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD0C08F71A2E445C00145508 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +66,7 @@
 		CD0C08C61A2E425E00145508 = {
 			isa = PBXGroup;
 			children = (
+				CD0C08F61A2E445C00145508 /* MapKit.framework */,
 				CD0C08D11A2E425E00145508 /* GetHome */,
 				CD0C08E91A2E425F00145508 /* GetHomeTests */,
 				CD0C08D01A2E425E00145508 /* Products */,
@@ -80,8 +86,9 @@
 			isa = PBXGroup;
 			children = (
 				CD0C08D41A2E425E00145508 /* AppDelegate.swift */,
-				CD0C08D61A2E425E00145508 /* FirstViewController.swift */,
-				CD0C08D81A2E425F00145508 /* SecondViewController.swift */,
+				CD0C08D61A2E425E00145508 /* MapViewController.swift */,
+				CD0C08F81A2E470200145508 /* LocationHelper.swift */,
+				CD0C08D81A2E425F00145508 /* DirectionsViewController.swift */,
 				CD0C08DA1A2E425F00145508 /* Main.storyboard */,
 				CD0C08DD1A2E425F00145508 /* Images.xcassets */,
 				CD0C08DF1A2E425F00145508 /* LaunchScreen.xib */,
@@ -164,6 +171,11 @@
 				TargetAttributes = {
 					CD0C08CE1A2E425E00145508 = {
 						CreatedOnToolsVersion = 6.1;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					CD0C08E51A2E425F00145508 = {
 						CreatedOnToolsVersion = 6.1;
@@ -215,9 +227,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD0C08D91A2E425F00145508 /* SecondViewController.swift in Sources */,
+				CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */,
+				CD0C08D91A2E425F00145508 /* DirectionsViewController.swift in Sources */,
 				CD0C08D51A2E425E00145508 /* AppDelegate.swift in Sources */,
-				CD0C08D71A2E425E00145508 /* FirstViewController.swift in Sources */,
+				CD0C08D71A2E425E00145508 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
