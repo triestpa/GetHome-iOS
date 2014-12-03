@@ -16,6 +16,11 @@
 		CD0C08ED1A2E425F00145508 /* GetHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08EC1A2E425F00145508 /* GetHomeTests.swift */; };
 		CD0C08F71A2E445C00145508 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0C08F61A2E445C00145508 /* MapKit.framework */; };
 		CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08F81A2E470200145508 /* LocationHelper.swift */; };
+		CD9CC0061A2E84E4004D48FE /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0011A2E84E4004D48FE /* RECommonFunctions.m */; };
+		CD9CC0071A2E84E4004D48FE /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0031A2E84E4004D48FE /* RESideMenu.m */; };
+		CD9CC0081A2E84E4004D48FE /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0051A2E84E4004D48FE /* UIViewController+RESideMenu.m */; };
+		CD9CC00B1A2E8653004D48FE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC00A1A2E8653004D48FE /* RootViewController.swift */; };
+		CD9CC0171A2E886B004D48FE /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0161A2E886B004D48FE /* LeftMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,15 @@
 		CD0C08EC1A2E425F00145508 /* GetHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeTests.swift; sourceTree = "<group>"; };
 		CD0C08F61A2E445C00145508 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CD0C08F81A2E470200145508 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
+		CD9CC0001A2E84E4004D48FE /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		CD9CC0011A2E84E4004D48FE /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		CD9CC0021A2E84E4004D48FE /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		CD9CC0031A2E84E4004D48FE /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		CD9CC0041A2E84E4004D48FE /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		CD9CC0051A2E84E4004D48FE /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		CD9CC0091A2E85C5004D48FE /* GetHome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHome-Bridging-Header.h"; sourceTree = "<group>"; };
+		CD9CC00A1A2E8653004D48FE /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = ../RootViewController.swift; sourceTree = "<group>"; };
+		CD9CC0161A2E886B004D48FE /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +84,7 @@
 				CD0C08D11A2E425E00145508 /* GetHome */,
 				CD0C08E91A2E425F00145508 /* GetHomeTests */,
 				CD0C08D01A2E425E00145508 /* Products */,
+				CD9CBFFF1A2E84E4004D48FE /* RESideMenu */,
 			);
 			sourceTree = "<group>";
 		};
@@ -89,10 +104,13 @@
 				CD0C08D61A2E425E00145508 /* MapViewController.swift */,
 				CD0C08F81A2E470200145508 /* LocationHelper.swift */,
 				CD0C08D81A2E425F00145508 /* DirectionsViewController.swift */,
+				CD9CC00A1A2E8653004D48FE /* RootViewController.swift */,
+				CD9CC0161A2E886B004D48FE /* LeftMenuViewController.swift */,
 				CD0C08DA1A2E425F00145508 /* Main.storyboard */,
 				CD0C08DD1A2E425F00145508 /* Images.xcassets */,
 				CD0C08DF1A2E425F00145508 /* LaunchScreen.xib */,
 				CD0C08D21A2E425E00145508 /* Supporting Files */,
+				CD9CC0091A2E85C5004D48FE /* GetHome-Bridging-Header.h */,
 			);
 			path = GetHome;
 			sourceTree = "<group>";
@@ -120,6 +138,19 @@
 				CD0C08EB1A2E425F00145508 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CD9CBFFF1A2E84E4004D48FE /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CD9CC0001A2E84E4004D48FE /* RECommonFunctions.h */,
+				CD9CC0011A2E84E4004D48FE /* RECommonFunctions.m */,
+				CD9CC0021A2E84E4004D48FE /* RESideMenu.h */,
+				CD9CC0031A2E84E4004D48FE /* RESideMenu.m */,
+				CD9CC0041A2E84E4004D48FE /* UIViewController+RESideMenu.h */,
+				CD9CC0051A2E84E4004D48FE /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,8 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */,
+				CD9CC0061A2E84E4004D48FE /* RECommonFunctions.m in Sources */,
 				CD0C08D91A2E425F00145508 /* DirectionsViewController.swift in Sources */,
 				CD0C08D51A2E425E00145508 /* AppDelegate.swift in Sources */,
+				CD9CC0071A2E84E4004D48FE /* RESideMenu.m in Sources */,
+				CD9CC0171A2E886B004D48FE /* LeftMenuViewController.swift in Sources */,
+				CD9CC0081A2E84E4004D48FE /* UIViewController+RESideMenu.m in Sources */,
+				CD9CC00B1A2E8653004D48FE /* RootViewController.swift in Sources */,
 				CD0C08D71A2E425E00145508 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +395,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/patrick/Development/iOS/GetHome/GetHome/GetHome-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -371,6 +408,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/patrick/Development/iOS/GetHome/GetHome/GetHome-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
