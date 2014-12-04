@@ -23,11 +23,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     @IBOutlet weak var refreshButton: UIButton!
     
     @IBAction func refreshButtonTouch(sender: AnyObject) {
-        getDirections()
+     // getDirections()
+        directionManager?.getWalkingDirections()
     }
     
     var myRoute : MKRoute?
-    
+    var directionManager: DirectionsManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
                 
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
+        
+        directionManager = DirectionsManager(directions: self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,55 +47,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    func getDirections() {
-        if let currentLocation = locationHelper.lastLocation? {
-            
-            var point1 = MKPointAnnotation()
-            var point2 = MKPointAnnotation()
-            
-            point1.coordinate = currentLocation.coordinate
-            point1.title = "Start"
-            mapView.addAnnotation(point1)
-            
-            point2.coordinate = CLLocationCoordinate2DMake(47.5069, 19.0456)
-            point2.title = "Home"
-            mapView.addAnnotation(point2)
-            mapView.centerCoordinate = point2.coordinate
-            mapView.delegate = self
-            
-            //Span of the map
-            mapView.setRegion(MKCoordinateRegionMake(point1.coordinate, MKCoordinateSpanMake(0.03,0.03)), animated: true)
-            
-            var directionsRequest = MKDirectionsRequest()
-            let markYou = MKPlacemark(coordinate: CLLocationCoordinate2DMake(point1.coordinate.latitude, point1.coordinate.longitude), addressDictionary: nil)
-            let markHome = MKPlacemark(coordinate: CLLocationCoordinate2DMake(point2.coordinate.latitude, point2.coordinate.longitude), addressDictionary: nil)
-            
-            directionsRequest.setSource(MKMapItem(placemark: markYou))
-            directionsRequest.setDestination(MKMapItem(placemark: markHome))
-            directionsRequest.transportType = MKDirectionsTransportType.Walking
-            var directions = MKDirections(request: directionsRequest)
-            directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
-                if error == nil {
-                    self.myRoute = response.routes[0] as? MKRoute
-                    self.mapView.addOverlay(self.myRoute?.polyline)
-                }
-            }
-        }
-        else {
-            println("Last Location Not Found")
-        }
-    }
-    
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        
         var myLineRenderer = MKPolylineRenderer(polyline: myRoute?.polyline!)
         myLineRenderer.strokeColor = UIColor.redColor()
         myLineRenderer.lineWidth = 3
         return myLineRenderer
     }
     
-    func updateView() {
+    func updateView(route: MKRoute) {
         //update the map directions
+        self.myRoute = route
+        self.mapView.addOverlay(self.myRoute?.polyline)
     }
     
 }
