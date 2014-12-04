@@ -60,7 +60,6 @@
 @property (assign, readwrite, nonatomic) IBInspectable CGSize contentViewShadowOffset;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewShadowOpacity;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewShadowRadius;
-@property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewFadeOutAlpha;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewScaleValue;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewInLandscapeOffsetCenterX;
 @property (assign, readwrite, nonatomic) IBInspectable CGFloat contentViewInPortraitOffsetCenterX;

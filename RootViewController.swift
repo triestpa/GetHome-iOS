@@ -21,10 +21,10 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         self.menuPreferredStatusBarStyle = UIStatusBarStyle.LightContent
         self.contentViewShadowColor = UIColor.blackColor();
         self.contentViewShadowOffset = CGSizeMake(0, 0);
-        self.contentViewShadowOpacity = 0.6;
+        self.contentViewShadowOpacity = 0.8;
         self.contentViewShadowRadius = 12;
         self.contentViewShadowEnabled = true;
-        self.parallaxEnabled = false
+        self.parallaxEnabled = true
         
         self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as UIViewController
         self.leftMenuViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuViewController") as UIViewController

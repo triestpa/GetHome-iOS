@@ -16,11 +16,10 @@
 		CD0C08ED1A2E425F00145508 /* GetHomeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08EC1A2E425F00145508 /* GetHomeTests.swift */; };
 		CD0C08F71A2E445C00145508 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD0C08F61A2E445C00145508 /* MapKit.framework */; };
 		CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0C08F81A2E470200145508 /* LocationHelper.swift */; };
-		CD9CC0061A2E84E4004D48FE /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0011A2E84E4004D48FE /* RECommonFunctions.m */; };
-		CD9CC0071A2E84E4004D48FE /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0031A2E84E4004D48FE /* RESideMenu.m */; };
-		CD9CC0081A2E84E4004D48FE /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0051A2E84E4004D48FE /* UIViewController+RESideMenu.m */; };
+		CD4652441A305B8200F4349E /* DirectionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4652431A305B8200F4349E /* DirectionsManager.swift */; };
 		CD9CC00B1A2E8653004D48FE /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC00A1A2E8653004D48FE /* RootViewController.swift */; };
 		CD9CC0171A2E886B004D48FE /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD9CC0161A2E886B004D48FE /* LeftMenuViewController.swift */; };
+		DE96B3FBA93413E100A2F1D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7269555F66FB29431E06B /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +33,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6ACC5F6874B454132FBCA472 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		A5E7269555F66FB29431E06B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A83895D815C38D012B96E994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD0C08CF1A2E425E00145508 /* GetHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0C08D31A2E425E00145508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0C08D41A2E425E00145508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -47,12 +49,7 @@
 		CD0C08EC1A2E425F00145508 /* GetHomeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHomeTests.swift; sourceTree = "<group>"; };
 		CD0C08F61A2E445C00145508 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CD0C08F81A2E470200145508 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
-		CD9CC0001A2E84E4004D48FE /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
-		CD9CC0011A2E84E4004D48FE /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
-		CD9CC0021A2E84E4004D48FE /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
-		CD9CC0031A2E84E4004D48FE /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
-		CD9CC0041A2E84E4004D48FE /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
-		CD9CC0051A2E84E4004D48FE /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		CD4652431A305B8200F4349E /* DirectionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsManager.swift; sourceTree = "<group>"; };
 		CD9CC0091A2E85C5004D48FE /* GetHome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHome-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD9CC00A1A2E8653004D48FE /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = ../RootViewController.swift; sourceTree = "<group>"; };
 		CD9CC0161A2E886B004D48FE /* LeftMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +61,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0C08F71A2E445C00145508 /* MapKit.framework in Frameworks */,
+				DE96B3FBA93413E100A2F1D4 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A2F1C887424EABFCFDF57F17 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6ACC5F6874B454132FBCA472 /* Pods.debug.xcconfig */,
+				A83895D815C38D012B96E994 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CD0C08C61A2E425E00145508 = {
 			isa = PBXGroup;
 			children = (
@@ -84,7 +91,8 @@
 				CD0C08D11A2E425E00145508 /* GetHome */,
 				CD0C08E91A2E425F00145508 /* GetHomeTests */,
 				CD0C08D01A2E425E00145508 /* Products */,
-				CD9CBFFF1A2E84E4004D48FE /* RESideMenu */,
+				A2F1C887424EABFCFDF57F17 /* Pods */,
+				EAD1AB0056F1F5F13266E3BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,15 +110,16 @@
 			children = (
 				CD0C08D41A2E425E00145508 /* AppDelegate.swift */,
 				CD0C08D61A2E425E00145508 /* MapViewController.swift */,
-				CD0C08F81A2E470200145508 /* LocationHelper.swift */,
 				CD0C08D81A2E425F00145508 /* DirectionsViewController.swift */,
+				CD0C08F81A2E470200145508 /* LocationHelper.swift */,
+				CD4652431A305B8200F4349E /* DirectionsManager.swift */,
 				CD9CC00A1A2E8653004D48FE /* RootViewController.swift */,
 				CD9CC0161A2E886B004D48FE /* LeftMenuViewController.swift */,
+				CD9CC0091A2E85C5004D48FE /* GetHome-Bridging-Header.h */,
 				CD0C08DA1A2E425F00145508 /* Main.storyboard */,
 				CD0C08DD1A2E425F00145508 /* Images.xcassets */,
 				CD0C08DF1A2E425F00145508 /* LaunchScreen.xib */,
 				CD0C08D21A2E425E00145508 /* Supporting Files */,
-				CD9CC0091A2E85C5004D48FE /* GetHome-Bridging-Header.h */,
 			);
 			path = GetHome;
 			sourceTree = "<group>";
@@ -140,17 +149,12 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		CD9CBFFF1A2E84E4004D48FE /* RESideMenu */ = {
+		EAD1AB0056F1F5F13266E3BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CD9CC0001A2E84E4004D48FE /* RECommonFunctions.h */,
-				CD9CC0011A2E84E4004D48FE /* RECommonFunctions.m */,
-				CD9CC0021A2E84E4004D48FE /* RESideMenu.h */,
-				CD9CC0031A2E84E4004D48FE /* RESideMenu.m */,
-				CD9CC0041A2E84E4004D48FE /* UIViewController+RESideMenu.h */,
-				CD9CC0051A2E84E4004D48FE /* UIViewController+RESideMenu.m */,
+				A5E7269555F66FB29431E06B /* libPods.a */,
 			);
-			path = RESideMenu;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,9 +164,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD0C08F01A2E425F00145508 /* Build configuration list for PBXNativeTarget "GetHome" */;
 			buildPhases = (
+				C4F21C67AE489B9553F7DF31 /* Check Pods Manifest.lock */,
 				CD0C08CB1A2E425E00145508 /* Sources */,
 				CD0C08CC1A2E425E00145508 /* Frameworks */,
 				CD0C08CD1A2E425E00145508 /* Resources */,
+				BF178B4B55105BD83C8CCB04 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,18 +259,49 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BF178B4B55105BD83C8CCB04 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4F21C67AE489B9553F7DF31 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD0C08CB1A2E425E00145508 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */,
-				CD9CC0061A2E84E4004D48FE /* RECommonFunctions.m in Sources */,
 				CD0C08D91A2E425F00145508 /* DirectionsViewController.swift in Sources */,
 				CD0C08D51A2E425E00145508 /* AppDelegate.swift in Sources */,
-				CD9CC0071A2E84E4004D48FE /* RESideMenu.m in Sources */,
 				CD9CC0171A2E886B004D48FE /* LeftMenuViewController.swift in Sources */,
-				CD9CC0081A2E84E4004D48FE /* UIViewController+RESideMenu.m in Sources */,
+				CD4652441A305B8200F4349E /* DirectionsManager.swift in Sources */,
 				CD9CC00B1A2E8653004D48FE /* RootViewController.swift in Sources */,
 				CD0C08D71A2E425E00145508 /* MapViewController.swift in Sources */,
 			);
@@ -389,6 +426,7 @@
 		};
 		CD0C08F11A2E425F00145508 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6ACC5F6874B454132FBCA472 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GetHome/Info.plist;
@@ -402,6 +440,7 @@
 		};
 		CD0C08F21A2E425F00145508 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A83895D815C38D012B96E994 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GetHome/Info.plist;

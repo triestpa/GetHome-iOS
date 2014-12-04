@@ -9,27 +9,32 @@
 import UIKit
 import MapKit
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+/* 
+Notification closure
+or
+protocal- data manager delegate
+
+http://codereview.stackexchange.com/questions/55775/is-this-a-correct-use-of-using-protocols-and-delegate-pattern-in-swift
+*/
+
+class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var refreshButton: UIButton!
     
     @IBAction func refreshButtonTouch(sender: AnyObject) {
-        showRouteSelectionWindow()
+        getDirections()
     }
     
     var myRoute : MKRoute?
     
-    let locationHelper = LocationHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         refreshButton.layer.cornerRadius = 10;
         refreshButton.clipsToBounds = true;
-        
-        locationHelper.startLocationUpdate()
-        
+                
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
     }
@@ -46,7 +51,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             var point2 = MKPointAnnotation()
             
             point1.coordinate = currentLocation.coordinate
-            point1.title = "You"
+            point1.title = "Start"
             mapView.addAnnotation(point1)
             
             point2.coordinate = CLLocationCoordinate2DMake(47.5069, 19.0456)
@@ -56,7 +61,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             mapView.delegate = self
             
             //Span of the map
-            mapView.setRegion(MKCoordinateRegionMake(point2.coordinate, MKCoordinateSpanMake(0.7,0.7)), animated: true)
+            mapView.setRegion(MKCoordinateRegionMake(point1.coordinate, MKCoordinateSpanMake(0.03,0.03)), animated: true)
             
             var directionsRequest = MKDirectionsRequest()
             let markYou = MKPlacemark(coordinate: CLLocationCoordinate2DMake(point1.coordinate.latitude, point1.coordinate.longitude), addressDictionary: nil)
@@ -86,22 +91,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return myLineRenderer
     }
     
-    func showRouteSelectionWindow() {
-        let alertController = UIAlertController(title: "Take Me Home", message: nil, preferredStyle: .Alert)
-        let oneAction = UIAlertAction(title: "One", style: .Default) { (_) in }
-        let twoAction = UIAlertAction(title: "Two", style: .Default) { (_) in }
-        let threeAction = UIAlertAction(title: "Three", style: .Default) { (_) in }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
-        
-        alertController.addAction(oneAction)
-        alertController.addAction(twoAction)
-        alertController.addAction(threeAction)
-        alertController.addAction(cancelAction)
-        
-        getDirections()
+    func updateView() {
+        //update the map directions
     }
-    
-    
     
 }
 
