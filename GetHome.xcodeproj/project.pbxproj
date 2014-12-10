@@ -30,9 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6ACC5F6874B454132FBCA472 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		33C12674466BB6A6CEE015C8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A5E7269555F66FB29431E06B /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A83895D815C38D012B96E994 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CD0C08CF1A2E425E00145508 /* GetHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD0C08D31A2E425E00145508 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD0C08D41A2E425E00145508 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +45,8 @@
 		CD0C08F61A2E445C00145508 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CD0C08F81A2E470200145508 /* LocationHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationHelper.swift; sourceTree = "<group>"; };
 		CD4652431A305B8200F4349E /* DirectionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectionsManager.swift; sourceTree = "<group>"; };
+		CD78CC8D1A38B3400055C98E /* GetHome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHome-Bridging-Header.h"; sourceTree = "<group>"; };
+		D061F1FF6C8B29C494E7A0D9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +72,8 @@
 		A2F1C887424EABFCFDF57F17 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6ACC5F6874B454132FBCA472 /* Pods.debug.xcconfig */,
-				A83895D815C38D012B96E994 /* Pods.release.xcconfig */,
+				D061F1FF6C8B29C494E7A0D9 /* Pods.debug.xcconfig */,
+				33C12674466BB6A6CEE015C8 /* Pods.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -107,6 +108,7 @@
 				CD0C08F81A2E470200145508 /* LocationHelper.swift */,
 				CD4652431A305B8200F4349E /* DirectionsManager.swift */,
 				CD0C08DA1A2E425F00145508 /* Main.storyboard */,
+				CD78CC8D1A38B3400055C98E /* GetHome-Bridging-Header.h */,
 				CD0C08DF1A2E425F00145508 /* LaunchScreen.xib */,
 				CD0C08D21A2E425E00145508 /* Supporting Files */,
 			);
@@ -412,7 +414,7 @@
 		};
 		CD0C08F11A2E425F00145508 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6ACC5F6874B454132FBCA472 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = D061F1FF6C8B29C494E7A0D9 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GetHome/Info.plist;
@@ -426,7 +428,7 @@
 		};
 		CD0C08F21A2E425F00145508 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A83895D815C38D012B96E994 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 33C12674466BB6A6CEE015C8 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GetHome/Info.plist;

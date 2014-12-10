@@ -1,1 +1,43 @@
+PODS:
+  - EAIntroView (2.5.1)
+  - MRProgress (0.4.3):
+    - MRProgress/ActivityIndicator (= 0.4.3)
+    - MRProgress/Blur (= 0.4.3)
+    - MRProgress/Circular (= 0.4.3)
+    - MRProgress/Helper (= 0.4.3)
+    - MRProgress/Icons (= 0.4.3)
+    - MRProgress/MessageInterceptor (= 0.4.3)
+    - MRProgress/NavigationBarProgress (= 0.4.3)
+    - MRProgress/Overlay (= 0.4.3)
+    - MRProgress/Stopable (= 0.4.3)
+    - MRProgress/WeakProxy (= 0.4.3)
+  - MRProgress/ActivityIndicator (0.4.3):
+    - MRProgress/Stopable
+  - MRProgress/Blur (0.4.3):
+    - MRProgress/Helper
+  - MRProgress/Circular (0.4.3):
+    - MRProgress/Helper
+    - MRProgress/Stopable
+  - MRProgress/Helper (0.4.3)
+  - MRProgress/Icons (0.4.3)
+  - MRProgress/MessageInterceptor (0.4.3)
+  - MRProgress/NavigationBarProgress (0.4.3)
+  - MRProgress/Overlay (0.4.3):
+    - MRProgress/ActivityIndicator
+    - MRProgress/Blur
+    - MRProgress/Circular
+    - MRProgress/Helper
+    - MRProgress/Icons
+  - MRProgress/Stopable (0.4.3):
+    - MRProgress/Helper
+  - MRProgress/WeakProxy (0.4.3)
+
+DEPENDENCIES:
+  - EAIntroView (~> 2.5.0)
+  - MRProgress (~> 0.4.3)
+
+SPEC CHECKSUMS:
+  EAIntroView: 9586107ac7a6e849fb985c8d62109a9da649136b
+  MRProgress: e588fb8d0fba293715eaf0e485dd8402f4ce1de6
+
 COCOAPODS: 0.35.0
