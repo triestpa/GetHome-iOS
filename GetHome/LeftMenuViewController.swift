@@ -10,10 +10,10 @@ import UIKit
 
 class LeftMenuViewController: UIViewController {
 
+    var directionsManager: DirectionsManager?
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.view.backgroundColor = UIColor.blueColor()
-        // Do any additional setup after loading the view.
+     //   directionsManager = DirectionsManager(directions: self)
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +21,22 @@ class LeftMenuViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func carDirectionsTouch(sender: AnyObject) {
+        directionsManager?.getWalkingDirections()
+        
+    }
 
+    @IBAction func walkingDirectionsTouch(sender: AnyObject) {
+        directionsManager?.getWalkingDirections()
+    }
+    
+    
+    @IBAction func homeAddressTouch(sender: AnyObject) {
+    }
+    
+    @IBAction func findUberTouch(sender: AnyObject) {
+    }
+    
     /*
     // MARK: - Navigation
 

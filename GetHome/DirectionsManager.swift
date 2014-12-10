@@ -14,6 +14,8 @@ protocol DirectionsDelegate {
     func showError(route: String)
 }
 
+
+//Initialize this somewhere that it could be initialized with both view controller classes
 class DirectionsManager {
     
     var directionsDelegate:DirectionsDelegate // delegate property

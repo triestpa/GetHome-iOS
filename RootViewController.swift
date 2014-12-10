@@ -10,6 +10,8 @@ import UIKit
 
 class RootViewController: RESideMenu, RESideMenuDelegate {
     
+    var directionManager: DirectionsManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

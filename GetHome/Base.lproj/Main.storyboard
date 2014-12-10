@@ -166,6 +166,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="carDirectionsTouch:" destination="xeE-am-4Ny" eventType="touchUpInside" id="ylz-Ev-wev"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OpY-sr-TnB">
                                 <rect key="frame" x="29" y="202" width="185" height="40"/>
@@ -174,6 +177,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="walkingDirectionsTouch:" destination="xeE-am-4Ny" eventType="touchUpInside" id="iYZ-uL-eSb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vm8-wI-xct">
                                 <rect key="frame" x="21" y="331" width="201" height="40"/>
@@ -182,6 +188,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="homeAddressTouch:" destination="xeE-am-4Ny" eventType="touchUpInside" id="mdr-Jc-P8Y"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9LK-Jd-Rha">
                                 <rect key="frame" x="29" y="264" width="166" height="40"/>
@@ -190,6 +199,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="findUberTouch:" destination="xeE-am-4Ny" eventType="touchUpInside" id="qip-Dt-IS9"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -200,6 +212,9 @@
                             <constraint firstItem="sCM-1V-oyS" firstAttribute="leading" secondItem="g8D-bg-ri4" secondAttribute="leading" constant="-60" id="y6c-uT-kuz"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="walkingDirectionsTouch" destination="OpY-sr-TnB" id="Yuv-Wf-XZQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gWd-nj-J8D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
