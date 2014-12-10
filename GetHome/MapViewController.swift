@@ -23,7 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     @IBOutlet weak var refreshButton: UIButton!
     
     @IBAction func refreshButtonTouch(sender: AnyObject) {
-        directionManager?.getWalkingDirections(self.view)
+        showOptions()
     }
     
     var myRoute : MKRoute?
@@ -59,11 +59,39 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     func showError(errorMessage: String) {
         //Show Error Dialog
         var alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        self.presentViewController(alert, animated: true, completion: nil)
         var okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
             return
         })
         alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func showOptions() {
+        var optionsController = UIAlertController(title: "How Do You Want to Travel?",
+            message: nil, preferredStyle: .Alert)
+        
+        var walkAction = UIAlertAction(title: "Walking", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionManager?.getWalkingDirections(self.view)
+            return
+            })
+        optionsController.addAction(walkAction)
+        
+        var driveAction = UIAlertAction(title: "Driving", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionManager?.getWalkingDirections(self.view)
+            return
+            })
+        optionsController.addAction(driveAction)
+        
+        var uberAction = UIAlertAction(title: "Uber", style: UIAlertActionStyle.Default, handler: { action in
+            self.directionManager?.getWalkingDirections(self.view)
+            return})
+        optionsController.addAction(uberAction)
+        
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+            return})
+        optionsController.addAction(cancelAction)
+        
+        self.presentViewController(optionsController, animated: true, completion: nil)
     }
 }
 
