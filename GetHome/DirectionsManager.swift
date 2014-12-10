@@ -14,7 +14,6 @@ protocol DirectionsDelegate {
     func showError(route: String)
 }
 
-
 //Initialize this somewhere that it could be initialized with both view controller classes
 class DirectionsManager {
     
@@ -37,7 +36,7 @@ class DirectionsManager {
         }
     }
     
-    func getWalkingDirections() {
+    func getWalkingDirections(thisView: UIView) {
         if let currentLocation = locationHelper.lastLocation? {
             var point1 = MKPointAnnotation()
             var point2 = MKPointAnnotation()
@@ -55,16 +54,19 @@ class DirectionsManager {
             directionsRequest.setDestination(MKMapItem(placemark: markHome))
             directionsRequest.transportType = MKDirectionsTransportType.Walking
             var directions = MKDirections(request: directionsRequest)
+            
             directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
                 if error == nil {
                     self.thisRoute = response.routes[0] as? MKRoute
                     self.didUpdateDirections()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    MRProgressOverlayView.dismissOverlayForView(thisView, animated: true)
                 }
                 else {
                   self.directionsDelegate.showError(error.localizedDescription)
                 }
             }
+            MRProgressOverlayView.showOverlayAddedTo(thisView, animated: true)
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         }
     }

@@ -23,8 +23,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     @IBOutlet weak var refreshButton: UIButton!
     
     @IBAction func refreshButtonTouch(sender: AnyObject) {
-     // getDirections()
-        directionManager?.getWalkingDirections()
+        directionManager?.getWalkingDirections(self.view)
     }
     
     var myRoute : MKRoute?
@@ -32,10 +31,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        refreshButton.layer.cornerRadius = 10;
-        refreshButton.clipsToBounds = true;
-                
+            
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         

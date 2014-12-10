@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DirectionsViewController: UIViewController {
+class DirectionsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,9 @@ class DirectionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func backButtonTap(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }
 

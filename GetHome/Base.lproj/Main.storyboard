@@ -17,42 +17,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9cf-aC-az3">
-                                <rect key="frame" x="0.0" y="14" width="600" height="587"/>
+                                <rect key="frame" x="0.0" y="-50" width="600" height="700"/>
                             </mapView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-R9-fBq">
-                                <rect key="frame" x="188" y="109" width="225" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="225" id="4WC-Yy-XYK"/>
-                                    <constraint firstAttribute="height" constant="50" id="ASL-ys-rr7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-R9-fBq">
+                                <rect key="frame" x="16" y="518" width="72" height="62"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" title="Take Me Home">
+                                <state key="normal" image="directions">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="refreshButtonTouch:" destination="9pv-A4-QxB" eventType="touchUpInside" id="6dF-D6-Wkh"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOb-dP-UY7">
+                                <rect key="frame" x="523" y="519" width="61" height="61"/>
+                                <state key="normal" image="listicon">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="qfJ-vr-Nzg" kind="presentation" id="Vof-sr-spb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerX" secondItem="ssE-R9-fBq" secondAttribute="centerX" id="46K-yx-Gxp"/>
-                            <constraint firstAttribute="trailing" secondItem="ssE-R9-fBq" secondAttribute="trailing" constant="59" id="6Nb-Fv-iKb"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="9cf-aC-az3" secondAttribute="bottom" constant="-50" id="8Nl-yl-arD"/>
-                            <constraint firstItem="9cf-aC-az3" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="-50" id="KlP-0p-fXF"/>
-                            <constraint firstItem="ssE-R9-fBq" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="45" id="OTZ-Ph-ece"/>
-                            <constraint firstItem="ssE-R9-fBq" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="45" id="Tja-lc-1gU"/>
-                            <constraint firstAttribute="centerX" secondItem="9cf-aC-az3" secondAttribute="centerX" id="Yhj-kQ-Gmz"/>
-                            <constraint firstItem="9cf-aC-az3" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="dsR-jl-6Ai"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="ssE-R9-fBq" secondAttribute="bottom" constant="20" id="F4N-z3-gO9"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="DOb-dP-UY7" secondAttribute="bottom" constant="20" id="HZg-PH-pZ6"/>
+                            <constraint firstAttribute="centerX" secondItem="9cf-aC-az3" secondAttribute="centerX" id="OMa-82-2fn"/>
+                            <constraint firstAttribute="trailing" secondItem="DOb-dP-UY7" secondAttribute="trailing" constant="16" id="aE0-lC-W7k"/>
+                            <constraint firstAttribute="centerY" secondItem="9cf-aC-az3" secondAttribute="centerY" id="dB4-Rb-May"/>
+                            <constraint firstItem="9cf-aC-az3" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="g5D-Tw-S5R"/>
+                            <constraint firstItem="ssE-R9-fBq" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="16" id="gFl-Re-pyA"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="6Nb-Fv-iKb"/>
-                                <exclude reference="Tja-lc-1gU"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="acW-dT-cKf"/>
                     <connections>
@@ -64,8 +61,59 @@
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
+        <!--Directions Table View Controller-->
+        <scene sceneID="nkM-eQ-uBH">
+            <objects>
+                <tableViewController title="Directions Table View Controller" id="3Jx-p7-kfT" customClass="DirectionsTableViewController" customModule="GetHome" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5lT-9K-nem">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hHm-eh-Fk9">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hHm-eh-Fk9" id="6CN-R3-FR8">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3Jx-p7-kfT" id="eYb-vi-bOM"/>
+                            <outlet property="delegate" destination="3Jx-p7-kfT" id="bsF-CC-Gbd"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Directions" id="n10-jX-cxY">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="67D-AM-vjs">
+                            <connections>
+                                <action selector="backButtonTap:" destination="3Jx-p7-kfT" id="RBo-Pf-90x"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4cs-gk-KJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1582" y="394"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IGF-eQ-5SC">
+            <objects>
+                <navigationController id="qfJ-vr-Nzg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rpT-Q0-Xcv">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="3Jx-p7-kfT" kind="relationship" relationship="rootViewController" id="uHp-Kt-fiu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vLx-Kw-e5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="762" y="394"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="directions" width="62" height="62"/>
         <image name="first" width="30" height="30"/>
+        <image name="listicon" width="61" height="61"/>
     </resources>
 </document>
