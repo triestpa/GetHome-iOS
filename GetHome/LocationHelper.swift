@@ -22,7 +22,7 @@ class LocationHelper: NSObject, CLLocationManagerDelegate {
         }
         
         locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters //kCLLocationAccuracyThreeKilometers//kCLLocationAccuracyHundredMeters //kCLLocationAccuracyNearestTenMeters
     }
     
     func startLocationUpdate() {

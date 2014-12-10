@@ -22,6 +22,10 @@ class DirectionsManager {
     var thisRoute: MKRoute?
     let locationHelper = LocationHelper()
     
+    var urlSession: NSURLSession!
+    let uberServerKey = "KD1nRWopePlDo1KCi2_OJ8rxvPFG74nvljsc0bW7"
+    var uberResponse: NSDictionary!
+    
     init(directions:DirectionsDelegate){
         self.directionsDelegate = directions
         locationHelper.startLocationUpdate()
@@ -36,7 +40,8 @@ class DirectionsManager {
         }
     }
     
-    func getWalkingDirections(thisView: UIView) {
+    func getDirections(thisView: UIView, transport: MKDirectionsTransportType) {
+
         if let currentLocation = locationHelper.lastLocation? {
             var point1 = MKPointAnnotation()
             var point2 = MKPointAnnotation()
@@ -52,15 +57,15 @@ class DirectionsManager {
             
             directionsRequest.setSource(MKMapItem(placemark: markYou))
             directionsRequest.setDestination(MKMapItem(placemark: markHome))
-            directionsRequest.transportType = MKDirectionsTransportType.Walking
+            directionsRequest.transportType = transport
             var directions = MKDirections(request: directionsRequest)
             
             directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                MRProgressOverlayView.dismissOverlayForView(thisView, animated: true)
                 if error == nil {
                     self.thisRoute = response.routes[0] as? MKRoute
                     self.didUpdateDirections()
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                    MRProgressOverlayView.dismissOverlayForView(thisView, animated: true)
                 }
                 else {
                   self.directionsDelegate.showError(error.localizedDescription)
@@ -70,4 +75,68 @@ class DirectionsManager {
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         }
     }
+    
+    func findUber() {
+        queryUberApi(37.775818, longitude: -122.418028)
+    }
+    
+    func queryUberApi(latitude: Float, longitude: Float) {
+        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
+        urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
+
+        var urlString = "https://api.uber.com/v1/products?server_token=" + uberServerKey
+        urlString = urlString + "&latitude=" + "\(latitude)" + "&longitude=" + "\(longitude)"
+        
+        println(urlString)
+        
+        if let url = NSURL(string: urlString as NSString) {
+            makeNetworkRequest(url)
+        }
+        else {
+            //Catch NSURL formation error
+            directionsDelegate.showError("Invalid URL.")
+        }
+    }
+    
+    func makeNetworkRequest(url: NSURL) {
+        let dataTask = urlSession.dataTaskWithURL(url, completionHandler: {data, response, error in
+            let response = NSString(data: data, encoding: NSUTF8StringEncoding)
+            
+            // Detect http request error
+            if error != nil {
+                self.directionsDelegate.showError("Web Request Failed, Please Make Sure The Internet on Your Device is Working")
+            }
+            else {
+                println(response)
+                self.parseResult(data)
+            }
+            //Hide progress indicator
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        })
+        //Show progress indicator
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        dataTask.resume()
+    }
+    
+    func parseResult(data: NSData) {
+        // Parse JSON
+        if let serverResponse: NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary {
+            self.uberResponse = serverResponse as NSDictionary
+            
+            //Check for an error message within the response
+            if let errorMessage: NSString = self.uberResponse["message"] as? NSString {
+                println(errorMessage)
+                directionsDelegate.showError(errorMessage)
+            }
+            else {
+                //read json
+            }
+        }
+        else {
+            //Catch parsing error
+            print("JSON Parse Error")
+            directionsDelegate.showError("JSON Parse Error")
+        }
+    }
+
 }

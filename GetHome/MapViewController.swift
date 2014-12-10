@@ -51,7 +51,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     }
     
     func updateView(route: MKRoute) {
+        //center on user
+        let span = MKCoordinateSpanMake(0.02, 0.02)
+        let currentLocaton: CLLocationCoordinate2D? = directionManager?.locationHelper.lastLocation?.coordinate
+        let region = MKCoordinateRegionMake(currentLocaton! , span)
+        self.mapView.setRegion(region, animated: true)
+        
         //update the map directions
+        self.mapView.removeOverlay(self.myRoute?.polyline)
         self.myRoute = route
         self.mapView.addOverlay(self.myRoute?.polyline)
     }
@@ -71,19 +78,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
             message: nil, preferredStyle: .Alert)
         
         var walkAction = UIAlertAction(title: "Walking", style: UIAlertActionStyle.Default, handler: { action in
-            self.directionManager?.getWalkingDirections(self.view)
+            self.directionManager?.getDirections(self.view, transport: MKDirectionsTransportType.Walking)
             return
             })
         optionsController.addAction(walkAction)
         
         var driveAction = UIAlertAction(title: "Driving", style: UIAlertActionStyle.Default, handler: { action in
-            self.directionManager?.getWalkingDirections(self.view)
+            self.directionManager?.getDirections(self.view, transport: MKDirectionsTransportType.Automobile)
             return
             })
         optionsController.addAction(driveAction)
         
         var uberAction = UIAlertAction(title: "Uber", style: UIAlertActionStyle.Default, handler: { action in
-            self.directionManager?.getWalkingDirections(self.view)
+            self.directionManager?.findUber()
             return})
         optionsController.addAction(uberAction)
         
