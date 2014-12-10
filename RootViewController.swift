@@ -28,7 +28,6 @@ class RootViewController: RESideMenu, RESideMenuDelegate {
         
         self.contentViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as UIViewController
         self.leftMenuViewController = self.storyboard?.instantiateViewControllerWithIdentifier("LeftMenuViewController") as UIViewController
-        
     }
     
     // MARK: RESide Delegate Methods

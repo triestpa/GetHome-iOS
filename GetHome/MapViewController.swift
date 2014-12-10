@@ -60,5 +60,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         self.mapView.addOverlay(self.myRoute?.polyline)
     }
     
+    func showError(errorMessage: String) {
+        //Show Error Dialog
+        var alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(alert, animated: true, completion: nil)
+        var okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
+            return
+        })
+        alert.addAction(okAction)
+    }
 }
 

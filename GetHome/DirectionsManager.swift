@@ -11,26 +11,27 @@ import MapKit
 
 protocol DirectionsDelegate {
     func updateView(route: MKRoute)
+    func showError(route: String)
 }
 
 class DirectionsManager {
     
-    var directions:DirectionsDelegate // delegate property
+    var directionsDelegate:DirectionsDelegate // delegate property
     
     var thisRoute: MKRoute?
     let locationHelper = LocationHelper()
     
     init(directions:DirectionsDelegate){
-        self.directions = directions
+        self.directionsDelegate = directions
         locationHelper.startLocationUpdate()
     }
 
     func didUpdateDirections() {
         if (thisRoute != nil) {
-            directions.updateView(thisRoute!)
+            directionsDelegate.updateView(thisRoute!)
         }
         else {
-            println("Route is nil")
+            self.directionsDelegate.showError("No Route Found")
         }
     }
     
@@ -56,8 +57,13 @@ class DirectionsManager {
                 if error == nil {
                     self.thisRoute = response.routes[0] as? MKRoute
                     self.didUpdateDirections()
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                }
+                else {
+                  self.directionsDelegate.showError(error.localizedDescription)
                 }
             }
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         }
     }
 }
