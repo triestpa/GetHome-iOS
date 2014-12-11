@@ -1,5 +1,5 @@
 PODS:
-  - EAIntroView (2.5.1)
+  - EAIntroView (2.6.4)
   - MRProgress (0.4.3):
     - MRProgress/ActivityIndicator (= 0.4.3)
     - MRProgress/Blur (= 0.4.3)
@@ -33,11 +33,11 @@ PODS:
   - MRProgress/WeakProxy (0.4.3)
 
 DEPENDENCIES:
-  - EAIntroView (~> 2.5.0)
+  - EAIntroView (~> 2.6.4)
   - MRProgress (~> 0.4.3)
 
 SPEC CHECKSUMS:
-  EAIntroView: 9586107ac7a6e849fb985c8d62109a9da649136b
+  EAIntroView: 8f66dc6b79f2d52db26af8fc5476a05ffc549d4c
   MRProgress: e588fb8d0fba293715eaf0e485dd8402f4ce1de6
 
 COCOAPODS: 0.35.0

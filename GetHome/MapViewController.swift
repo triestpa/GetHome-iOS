@@ -36,6 +36,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         
         directionManager = DirectionsManager(directions: self)
+        
+        showIntroPage()
     }
     
     override func didReceiveMemoryWarning() {
@@ -100,5 +102,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         
         self.presentViewController(optionsController, animated: true, completion: nil)
     }
+    
+    func showProgress() {
+        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+    }
+    
+    func hideProgress() {
+        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+    }
+    
+    func showIntroPage() {
+        var introPage1 = EAIntroPage()
+        introPage1.title = "Welcome!"
+        introPage1.desc = "Ever wish there was an easier way to find your way home from anywhere?"
+        introPage1.bgImage = UIImage(named: "nightcity")
+        
+        var introPage2 = EAIntroPage()
+        introPage2.title = "We've got good news!"
+        introPage2.desc = "GetHome will help you find your way home from anywhere, all you need to do is open the app and we'll do the rest."
+        introPage2.bgImage = UIImage(named: "budapest")
+        
+        var introPage3 = EAIntroPage()
+        introPage3.title = "There's Even More!"
+        introPage3.desc = "We'll give you the option between driving or walking home, and you can even order an Uber home directly from the app. Remember to drink responsibly!"
+        introPage3.bgImage = UIImage(named: "citystreet")
+        
+        
+        var intro = EAIntroView(frame: self.view.bounds, andPages: [introPage1, introPage2, introPage3])
+        intro.showInView(self.view, animateDuration: 0.0)
+    }
+    
+    
 }
 

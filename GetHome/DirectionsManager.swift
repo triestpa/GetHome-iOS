@@ -12,6 +12,8 @@ import MapKit
 protocol DirectionsDelegate {
     func updateView(route: MKRoute)
     func showError(route: String)
+    func showProgress()
+    func hideProgress()
 }
 
 //Initialize this somewhere that it could be initialized with both view controller classes
@@ -62,7 +64,7 @@ class DirectionsManager {
             
             directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                MRProgressOverlayView.dismissOverlayForView(thisView, animated: true)
+                self.directionsDelegate.hideProgress()
                 if error == nil {
                     self.thisRoute = response.routes[0] as? MKRoute
                     self.didUpdateDirections()
@@ -71,7 +73,7 @@ class DirectionsManager {
                   self.directionsDelegate.showError(error.localizedDescription)
                 }
             }
-            MRProgressOverlayView.showOverlayAddedTo(thisView, animated: true)
+            directionsDelegate.showProgress()
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         }
     }
@@ -84,8 +86,7 @@ class DirectionsManager {
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
 
-        var urlString = "https://api.uber.com/v1/products?server_token=" + uberServerKey
-        urlString = urlString + "&latitude=" + "\(latitude)" + "&longitude=" + "\(longitude)"
+        var urlString = "https://api.uber.com/v1/products?server_token=" + uberServerKey + "&latitude=" + "\(latitude)" + "&longitude=" + "\(longitude)"
         
         println(urlString)
         
@@ -112,9 +113,11 @@ class DirectionsManager {
             }
             //Hide progress indicator
             UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+            self.directionsDelegate.hideProgress()
         })
         //Show progress indicator
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        directionsDelegate.showProgress()
         dataTask.resume()
     }
     
@@ -129,6 +132,7 @@ class DirectionsManager {
                 directionsDelegate.showError(errorMessage)
             }
             else {
+                directionsDelegate.showError(self.uberResponse.description)
                 //read json
             }
         }
