@@ -21,19 +21,28 @@ class StepMapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         
+        mapView.setVisibleMapRect(thisStep!.polyline.boundingMapRect, animated: false)
+        
+        if (fullRoute != nil) {
+            var bluePolyline: CustomPolyline = CustomPolyline(points: fullRoute!.polyline.points(), count: fullRoute!.polyline.pointCount)
+            bluePolyline.color = UIColor.blueColor()
+            bluePolyline.width = 2
+            mapView.addOverlay(bluePolyline)
+        }
+        
         thisStep?.polyline.points()
         if (thisStep != nil) {
-            mapView.addOverlay(thisStep!.polyline)
-        }
-        else {
-            println("The step is nil")
+            var redPolyline: CustomPolyline = CustomPolyline(points: thisStep!.polyline.points(), count: thisStep!.polyline.pointCount)
+            redPolyline.color = UIColor.redColor()
+            redPolyline.width = 4
+            mapView.addOverlay(redPolyline)
         }
     }
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        var myLineRenderer = MKPolylineRenderer(polyline: thisStep!.polyline)
-        myLineRenderer.strokeColor = UIColor.redColor()
-        myLineRenderer.lineWidth = 3
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: CustomPolyline!) -> MKOverlayRenderer! {
+        var myLineRenderer = MKPolylineRenderer(overlay: overlay)
+        myLineRenderer.strokeColor = overlay.color!
+        myLineRenderer.lineWidth = overlay.width!
         return myLineRenderer
     }
 
@@ -44,4 +53,10 @@ class StepMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func unwindToSegue (segue : UIStoryboardSegue) {}
     
+}
+
+class CustomPolyline : MKPolyline {
+    var color: UIColor?
+    var width: CGFloat?
+
 }
