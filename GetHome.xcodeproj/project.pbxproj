@@ -18,6 +18,7 @@
 		CD4652441A305B8200F4349E /* DirectionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD4652431A305B8200F4349E /* DirectionsManager.swift */; };
 		CD78CC8F1A38B7F10055C98E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD78CC8E1A38B7F00055C98E /* Images.xcassets */; };
 		CD96A6321A3E217F0008539D /* StepMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96A6311A3E217F0008539D /* StepMapViewController.swift */; };
+		CDBF8C5F1A3E41ED002E7FD8 /* AddressInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBF8C5E1A3E41ED002E7FD8 /* AddressInfo.plist */; };
 		DE96B3FBA93413E100A2F1D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7269555F66FB29431E06B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		CD78CC8D1A38B3400055C98E /* GetHome-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetHome-Bridging-Header.h"; sourceTree = "<group>"; };
 		CD78CC8E1A38B7F00055C98E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD96A6311A3E217F0008539D /* StepMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepMapViewController.swift; sourceTree = "<group>"; };
+		CDBF8C5E1A3E41ED002E7FD8 /* AddressInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AddressInfo.plist; sourceTree = "<group>"; };
 		D061F1FF6C8B29C494E7A0D9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -115,6 +117,7 @@
 				CD0C08DA1A2E425F00145508 /* Main.storyboard */,
 				CD78CC8D1A38B3400055C98E /* GetHome-Bridging-Header.h */,
 				CD0C08DF1A2E425F00145508 /* LaunchScreen.xib */,
+				CDBF8C5E1A3E41ED002E7FD8 /* AddressInfo.plist */,
 				CD0C08D21A2E425E00145508 /* Supporting Files */,
 				CD78CC8E1A38B7F00055C98E /* Images.xcassets */,
 			);
@@ -243,6 +246,7 @@
 			files = (
 				CD78CC8F1A38B7F10055C98E /* Images.xcassets in Resources */,
 				CD0C08DC1A2E425F00145508 /* Main.storyboard in Resources */,
+				CDBF8C5F1A3E41ED002E7FD8 /* AddressInfo.plist in Resources */,
 				CD0C08E11A2E425F00145508 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

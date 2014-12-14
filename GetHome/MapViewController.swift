@@ -21,16 +21,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     var myRoute : MKRoute?
     var directionManager: DirectionsManager?
     var homeAddress: String?
+    var plistDict: NSMutableDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            
+        
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         
         directionManager = DirectionsManager(directions: self)
         
-        showIntroPage()
+        var myDict: NSDictionary?
+        if let path = NSBundle.mainBundle().pathForResource("AddressInfo", ofType: "plist") {
+            plistDict = NSMutableDictionary(contentsOfFile: path)
+            println(plistDict!)
+            if (plistDict!["Address"] as String == "none"){
+                showIntroPage()
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -127,7 +135,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     }
     
     func introDidFinish(introView: EAIntroView!) {
-        var alert = UIAlertController(title: "Where should GetHome direct you to?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Set your Home Address", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
         let locationTextField = alert.textFields?.last as UITextField
         locationTextField.placeholder = "Enter Home Address"
@@ -136,10 +144,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
             let addressLookup: CLGeocoder = CLGeocoder()
             addressLookup.geocodeAddressString(self.homeAddress, completionHandler: {(placemarks, error)->Void in
                 if (error == nil) {
-                    println("here")
                     let firstCoordinate: CLPlacemark = placemarks[0] as CLPlacemark
                     let homeCoordinate = firstCoordinate.location.coordinate
                     println("Lat: " + "\(homeCoordinate.latitude)" + "\nLong: " + "\(homeCoordinate.longitude)")
+                    self.plistDict!["Address"] = self.homeAddress
+                    self.plistDict!["Latitude"] = Double(homeCoordinate.latitude)
+                    self.plistDict!["Longitude"] = Double(homeCoordinate.longitude)
+                    if let path = NSBundle.mainBundle().pathForResource("AddressInfo", ofType: "plist") {
+                        self.plistDict?.writeToFile(path, atomically: true)
+                        println(self.plistDict?)
+                    }
+
                 }
                 else {
                     //handle errors
