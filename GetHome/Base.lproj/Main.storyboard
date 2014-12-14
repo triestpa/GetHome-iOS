@@ -35,7 +35,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qfJ-vr-Nzg" kind="presentation" id="Vof-sr-spb"/>
+                                    <segue destination="qfJ-vr-Nzg" kind="presentation" identifier="showList" id="Vof-sr-spb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -70,10 +70,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="hHm-eh-Fk9">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DirectionsCell" textLabel="L4Q-vP-OIv" style="IBUITableViewCellStyleDefault" id="hHm-eh-Fk9">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hHm-eh-Fk9" id="6CN-R3-FR8">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="L4Q-vP-OIv">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -90,15 +98,58 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="aEU-g6-de1" kind="showDetail" identifier="showStepMap" id="o7r-VE-KiC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cs-gk-KJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1582" y="394"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Step Map Scene-->
+        <scene sceneID="29v-m5-X2y">
+            <objects>
+                <viewController title="Step Map Scene" id="aEU-g6-de1" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wu2-eL-E03"/>
+                        <viewControllerLayoutGuide type="bottom" id="uGV-fR-wLZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gAd-Cu-Uf9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bBn-XP-d9K">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-OZ-Yby">
+                                <rect key="frame" x="50" y="520" width="35" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="uGV-fR-wLZ" firstAttribute="top" secondItem="U4V-OZ-Yby" secondAttribute="bottom" constant="50" id="Etb-aR-LDd"/>
+                            <constraint firstItem="U4V-OZ-Yby" firstAttribute="leading" secondItem="gAd-Cu-Uf9" secondAttribute="leading" constant="50" id="FkW-Ku-Sfb"/>
+                            <constraint firstItem="bBn-XP-d9K" firstAttribute="top" secondItem="gAd-Cu-Uf9" secondAttribute="top" id="TOl-OT-GUG"/>
+                            <constraint firstItem="bBn-XP-d9K" firstAttribute="leading" secondItem="gAd-Cu-Uf9" secondAttribute="leading" id="aMm-TZ-reJ"/>
+                            <constraint firstAttribute="bottom" secondItem="bBn-XP-d9K" secondAttribute="bottom" id="pOn-vq-dNg"/>
+                            <constraint firstAttribute="trailing" secondItem="bBn-XP-d9K" secondAttribute="trailing" id="tPh-lg-FYT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="iyd-Jo-jmQ">
+                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="oZT-x0-pCF"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nlt-hU-IJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1582" y="1191"/>
+        </scene>
+        <!--Directions Navigation Controller-->
         <scene sceneID="IGF-eQ-5SC">
             <objects>
-                <navigationController id="qfJ-vr-Nzg" sceneMemberID="viewController">
+                <navigationController title="Directions Navigation Controller" id="qfJ-vr-Nzg" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rpT-Q0-Xcv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

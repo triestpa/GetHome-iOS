@@ -17,7 +17,7 @@ protocal- data manager delegate
 http://codereview.stackexchange.com/questions/55775/is-this-a-correct-use-of-using-protocols-and-delegate-pattern-in-swift
 */
 
-class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate {
+class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate, EAIntroDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var refreshButton: UIButton!
@@ -129,9 +129,41 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         
         
         var intro = EAIntroView(frame: self.view.bounds, andPages: [introPage1, introPage2, introPage3])
+        intro.delegate = self
+        intro.useMotionEffects = true
         intro.showInView(self.view, animateDuration: 0.0)
     }
     
+    func introDidFinish(introView: EAIntroView!) {
+        println("Intro Finished")
+     //   self.performSegueWithIdentifier("chooseLocationController", sender: self)
+    }
+    
+    func inputHomeAddress(sender: AnyObject) {
+        var alert = UIAlertController(title: "Enter Home Address", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler(nil)
+        let locationTextField = alert.textFields?.last as UITextField
+        
+        locationTextField.placeholder = "Enter Location"
+        alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { action in
+            return
+            }
+            ))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "chooseLocationController" {
+         //   let destinationViewController = segue.destinationViewController // as chooseLocationController
+        }
+        else if segue.identifier == "showList" {
+            let navigationController = segue.destinationViewController as UINavigationController
+            let destinationViewController = navigationController.topViewController as DirectionsTableViewController
+            if (directionManager?.thisRoute != nil) {
+                destinationViewController.routeSteps = directionManager?.thisRoute?.steps as [MKRouteStep]
+            }
+        }
+    }
     
 }
 
