@@ -20,7 +20,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     
     var myRoute : MKRoute?
     var directionManager: DirectionsManager?
-    var homeAddress: String?
     var plistDict: NSMutableDictionary?
     
     override func viewDidLoad() {
@@ -97,6 +96,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
             return})
         optionsController.addAction(uberAction)
         
+        var resetAddress = UIAlertAction(title: "Reset Home Address", style: UIAlertActionStyle.Default, handler: { action in
+            self.getUserAddress()
+            return})
+        optionsController.addAction(resetAddress)
+        
         var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
             return})
         optionsController.addAction(cancelAction)
@@ -135,32 +139,40 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     }
     
     func introDidFinish(introView: EAIntroView!) {
+        getUserAddress()
+    }
+    
+    func getUserAddress() {
         var alert = UIAlertController(title: "Set your Home Address", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
         let locationTextField = alert.textFields?.last as UITextField
         locationTextField.placeholder = "Enter Home Address"
         alert.addAction(UIAlertAction(title: "Set", style: UIAlertActionStyle.Default, handler: { action in
-            self.homeAddress = locationTextField.text
-            let addressLookup: CLGeocoder = CLGeocoder()
-            addressLookup.geocodeAddressString(self.homeAddress, completionHandler: {(placemarks, error)->Void in
-                if (error == nil) {
-                    let firstCoordinate: CLPlacemark = placemarks[0] as CLPlacemark
-                    let homeCoordinate = firstCoordinate.location.coordinate
-                    println("Lat: " + "\(homeCoordinate.latitude)" + "\nLong: " + "\(homeCoordinate.longitude)")
-                    self.plistDict!["Address"] = self.homeAddress
-                    self.plistDict!["Latitude"] = Double(homeCoordinate.latitude)
-                    self.plistDict!["Longitude"] = Double(homeCoordinate.longitude)
-                    if let path = NSBundle.mainBundle().pathForResource("AddressInfo", ofType: "plist") {
-                        self.plistDict?.writeToFile(path, atomically: true)
-                        println(self.plistDict?)
-                    }
-
-                }
-                else {
-                    //handle errors
-                }
-            })}))
+            let homeAddress = locationTextField.text
+            self.geocodeAddress(homeAddress)
+            }))
         self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func geocodeAddress(address: String) {
+        let addressLookup: CLGeocoder = CLGeocoder()
+        addressLookup.geocodeAddressString(address, completionHandler: {(placemarks, error)->Void in
+            if (error == nil) {
+                let firstCoordinate: CLPlacemark = placemarks[0] as CLPlacemark
+                let homeCoordinate = firstCoordinate.location.coordinate
+                println("Lat: " + "\(homeCoordinate.latitude)" + "\nLong: " + "\(homeCoordinate.longitude)")
+                self.plistDict!["Address"] = address
+                self.plistDict!["Latitude"] = Double(homeCoordinate.latitude)
+                self.plistDict!["Longitude"] = Double(homeCoordinate.longitude)
+                if let path = NSBundle.mainBundle().pathForResource("AddressInfo", ofType: "plist") {
+                    self.plistDict?.writeToFile(path, atomically: true)
+                    println(self.plistDict?)
+                }
+            }
+            else {
+                self.showError("Address Not Found")
+            }
+        })
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

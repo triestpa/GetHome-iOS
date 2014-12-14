@@ -20,9 +20,13 @@
                                 <rect key="frame" x="0.0" y="-50" width="600" height="700"/>
                             </mapView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ssE-R9-fBq">
-                                <rect key="frame" x="16" y="518" width="72" height="62"/>
+                                <rect key="frame" x="15" y="510" width="80" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="gH0-21-4K2"/>
+                                    <constraint firstAttribute="height" constant="70" id="rXm-xa-nvE"/>
+                                </constraints>
                                 <inset key="contentEdgeInsets" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
-                                <state key="normal" image="directions">
+                                <state key="normal" image="directionsicon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -30,7 +34,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOb-dP-UY7">
-                                <rect key="frame" x="523" y="519" width="61" height="61"/>
+                                <rect key="frame" x="510" y="510" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="3tf-hV-fzP"/>
+                                    <constraint firstAttribute="width" constant="70" id="6UP-lG-zDY"/>
+                                </constraints>
                                 <state key="normal" image="listicon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -45,10 +53,10 @@
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="ssE-R9-fBq" secondAttribute="bottom" constant="20" id="F4N-z3-gO9"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="DOb-dP-UY7" secondAttribute="bottom" constant="20" id="HZg-PH-pZ6"/>
                             <constraint firstAttribute="centerX" secondItem="9cf-aC-az3" secondAttribute="centerX" id="OMa-82-2fn"/>
-                            <constraint firstAttribute="trailing" secondItem="DOb-dP-UY7" secondAttribute="trailing" constant="16" id="aE0-lC-W7k"/>
+                            <constraint firstAttribute="trailing" secondItem="DOb-dP-UY7" secondAttribute="trailing" constant="20" id="aE0-lC-W7k"/>
                             <constraint firstAttribute="centerY" secondItem="9cf-aC-az3" secondAttribute="centerY" id="dB4-Rb-May"/>
                             <constraint firstItem="9cf-aC-az3" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="g5D-Tw-S5R"/>
-                            <constraint firstItem="ssE-R9-fBq" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="16" id="gFl-Re-pyA"/>
+                            <constraint firstItem="ssE-R9-fBq" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" constant="15" id="gFl-Re-pyA"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="first" id="acW-dT-cKf"/>
@@ -127,9 +135,13 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="bBn-XP-d9K">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-OZ-Yby">
-                                <rect key="frame" x="50" y="520" width="35" height="30"/>
-                                <state key="normal" title="Back">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U4V-OZ-Yby">
+                                <rect key="frame" x="20" y="40" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="PRI-Ly-5pA"/>
+                                    <constraint firstAttribute="height" constant="70" id="wUM-Ku-Hsc"/>
+                                </constraints>
+                                <state key="normal" image="backicon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -139,8 +151,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="uGV-fR-wLZ" firstAttribute="top" secondItem="U4V-OZ-Yby" secondAttribute="bottom" constant="50" id="Etb-aR-LDd"/>
-                            <constraint firstItem="U4V-OZ-Yby" firstAttribute="leading" secondItem="gAd-Cu-Uf9" secondAttribute="leading" constant="50" id="FkW-Ku-Sfb"/>
+                            <constraint firstItem="U4V-OZ-Yby" firstAttribute="top" secondItem="wu2-eL-E03" secondAttribute="bottom" constant="20" id="7Yy-Wy-gCN"/>
+                            <constraint firstItem="U4V-OZ-Yby" firstAttribute="leading" secondItem="gAd-Cu-Uf9" secondAttribute="leading" constant="20" id="FkW-Ku-Sfb"/>
                             <constraint firstItem="bBn-XP-d9K" firstAttribute="top" secondItem="gAd-Cu-Uf9" secondAttribute="top" id="TOl-OT-GUG"/>
                             <constraint firstItem="bBn-XP-d9K" firstAttribute="leading" secondItem="gAd-Cu-Uf9" secondAttribute="leading" id="aMm-TZ-reJ"/>
                             <constraint firstAttribute="bottom" secondItem="bBn-XP-d9K" secondAttribute="bottom" id="pOn-vq-dNg"/>
@@ -175,8 +187,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="directions" width="62" height="62"/>
+        <image name="backicon" width="702" height="702"/>
+        <image name="directionsicon" width="702" height="702"/>
         <image name="first" width="30" height="30"/>
-        <image name="listicon" width="61" height="61"/>
+        <image name="listicon" width="702" height="702"/>
     </resources>
 </document>
