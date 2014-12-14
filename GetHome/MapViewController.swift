@@ -20,6 +20,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     
     var myRoute : MKRoute?
     var directionManager: DirectionsManager?
+    var homeAddress: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +120,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         introPage3.desc = "We'll give you the option between driving or walking home, and you can even order an Uber home directly from the app. Remember to drink responsibly!"
         introPage3.bgImage = UIImage(named: "citystreet")
         
-        
         var intro = EAIntroView(frame: self.view.bounds, andPages: [introPage1, introPage2, introPage3])
         intro.delegate = self
         intro.useMotionEffects = true
@@ -127,20 +127,24 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     }
     
     func introDidFinish(introView: EAIntroView!) {
-        println("Intro Finished")
-     //   self.performSegueWithIdentifier("chooseLocationController", sender: self)
-    }
-    
-    func inputHomeAddress(sender: AnyObject) {
-        var alert = UIAlertController(title: "Enter Home Address", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Where should GetHome direct you to?", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
         let locationTextField = alert.textFields?.last as UITextField
-        
-        locationTextField.placeholder = "Enter Location"
-        alert.addAction(UIAlertAction(title: "Add", style: UIAlertActionStyle.Default, handler: { action in
-            return
-            }
-            ))
+        locationTextField.placeholder = "Enter Home Address"
+        alert.addAction(UIAlertAction(title: "Set", style: UIAlertActionStyle.Default, handler: { action in
+            self.homeAddress = locationTextField.text
+            let addressLookup: CLGeocoder = CLGeocoder()
+            addressLookup.geocodeAddressString(self.homeAddress, completionHandler: {(placemarks, error)->Void in
+                if (error == nil) {
+                    println("here")
+                    let firstCoordinate: CLPlacemark = placemarks[0] as CLPlacemark
+                    let homeCoordinate = firstCoordinate.location.coordinate
+                    println("Lat: " + "\(homeCoordinate.latitude)" + "\nLong: " + "\(homeCoordinate.longitude)")
+                }
+                else {
+                    //handle errors
+                }
+            })}))
         self.presentViewController(alert, animated: true, completion: nil)
     }
 

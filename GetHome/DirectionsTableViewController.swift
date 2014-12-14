@@ -47,6 +47,8 @@ class DirectionsTableViewController: UITableViewController {
         let thisStep = routeSteps[indexPath.row]
         
         cell.textLabel.text = thisStep.instructions
+        cell.detailTextLabel?.text = "\(thisStep.distance / 10)" + " meters"
+
         
         return cell
     }
