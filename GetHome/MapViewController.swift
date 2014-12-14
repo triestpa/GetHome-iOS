@@ -9,14 +9,6 @@
 import UIKit
 import MapKit
 
-/* 
-Notification closure
-or
-protocal- data manager delegate
-
-http://codereview.stackexchange.com/questions/55775/is-this-a-correct-use-of-using-protocols-and-delegate-pattern-in-swift
-*/
-
 class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate, EAIntroDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -160,7 +152,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
             let navigationController = segue.destinationViewController as UINavigationController
             let destinationViewController = navigationController.topViewController as DirectionsTableViewController
             if (directionManager?.thisRoute != nil) {
-                destinationViewController.routeSteps = directionManager?.thisRoute?.steps as [MKRouteStep]
+                destinationViewController.route = directionManager?.thisRoute?
             }
         }
     }

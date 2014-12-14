@@ -99,7 +99,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="aEU-g6-de1" kind="showDetail" identifier="showStepMap" id="o7r-VE-KiC"/>
+                        <segue destination="aEU-g6-de1" kind="presentation" identifier="showStepMap" modalTransitionStyle="coverVertical" id="o7r-VE-KiC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4cs-gk-KJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,7 +109,7 @@
         <!--Step Map Scene-->
         <scene sceneID="29v-m5-X2y">
             <objects>
-                <viewController title="Step Map Scene" id="aEU-g6-de1" sceneMemberID="viewController">
+                <viewController title="Step Map Scene" id="aEU-g6-de1" customClass="StepMapViewController" customModule="GetHome" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wu2-eL-E03"/>
                         <viewControllerLayoutGuide type="bottom" id="uGV-fR-wLZ"/>
@@ -126,6 +126,9 @@
                                 <state key="normal" title="Back">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="backButtonPress:" destination="aEU-g6-de1" eventType="touchUpInside" id="IOF-bp-v8r"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -138,11 +141,13 @@
                             <constraint firstAttribute="trailing" secondItem="bBn-XP-d9K" secondAttribute="trailing" id="tPh-lg-FYT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="iyd-Jo-jmQ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="stop" id="oZT-x0-pCF"/>
-                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="bBn-XP-d9K" id="I2H-jO-Wjb"/>
+                        <segue destination="hFs-5b-LpY" kind="unwind" identifier="exitMapSegue" unwindAction="unwindToSegue:" id="kK5-TO-6gL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nlt-hU-IJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hFs-5b-LpY" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1582" y="1191"/>
         </scene>

@@ -11,11 +11,16 @@ import MapKit
 
 class DirectionsTableViewController: UITableViewController {
 
+    var route: MKRoute?
     var routeSteps = [MKRouteStep]()
+    var selectedStep: MKRouteStep?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        if (route != nil) {
+            routeSteps = route?.steps as [MKRouteStep]
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -47,7 +52,17 @@ class DirectionsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedStep = routeSteps[indexPath.row]
         self.performSegueWithIdentifier("showStepMap", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "showStepMap" {
+            let destinationViewController = segue.destinationViewController as StepMapViewController
+            destinationViewController.thisStep = selectedStep
+            destinationViewController.fullRoute = route
+
+        }
     }
 }
 
