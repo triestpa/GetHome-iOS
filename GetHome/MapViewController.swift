@@ -78,13 +78,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     func showUberMessage(uberMessage: String) {
         //Show Error Dialog
         var alert = UIAlertController(title: "Uber", message: uberMessage, preferredStyle: UIAlertControllerStyle.Alert)
-        var okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
+        var okAction = UIAlertAction(title: "Open Uber", style: UIAlertActionStyle.Default, handler: { action in
+            // The only required property - pickupLocation
+            var pickupLocation = CLLocationCoordinate2D(latitude: 47.6235481, longitude: -122.336212)
+            
+            // Create an Uber instance
+            var uber = UberHelper(pickupLocation: pickupLocation)
+            
+            // Set a few optional properties
+            uber.pickupNickname = "Code Fellows"
+            
+            uber.dropoffLocation = CLLocationCoordinate2D(latitude: 47.591351, longitude: -122.332271)
+            uber.dropoffNickname = "Safeco Field"
+            
+            // Let's do it!
+            uber.deepLink()
             return
         })
         alert.addAction(okAction)
+        
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+            return
+        })
+        alert.addAction(cancelAction)
+
         self.presentViewController(alert, animated: true, completion: nil)
         
-        if UIApplication.sharedApplication().canOpenURL(<#url: NSURL#>)
     }
     
     func showOptions() {

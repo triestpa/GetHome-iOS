@@ -11,7 +11,7 @@ import CoreLocation
 import Foundation
 import UIKit
 
-class Uber {
+class UberHelper {
     
     // required property
     var pickupLocation : CLLocationCoordinate2D!
@@ -48,7 +48,7 @@ class Uber {
         let uberProtocol = "uber://"
         let httpsProtocol = "https://m.uber.com/"
         
-        var uberString = Uber.isUberAppInstalled() ? uberProtocol : httpsProtocol
+        var uberString = UberHelper.isUberAppInstalled() ? uberProtocol : httpsProtocol
         uberString += "?action=setPickup"
         uberString += "&pickup[latitude]=\(self.pickupLocation.latitude)"
         uberString += "&pickup[longitude]=\(self.pickupLocation.longitude)"
@@ -84,7 +84,7 @@ class Uber {
         var sharedApp = UIApplication.sharedApplication()
         let uberProtocol = NSURL(string: "uber://")
         
-        return sharedApp.canOpenURL(uberProtocol)
+        return sharedApp.canOpenURL(uberProtocol!)
     }
     
 }
