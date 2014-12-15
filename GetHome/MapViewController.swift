@@ -21,6 +21,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     var myRoute : MKRoute?
     var directionManager: DirectionsManager?
     var plistDict: NSMutableDictionary?
+    var homePoint: CLLocationCoordinate2D?
+    var homeAddress: String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         mapView.delegate = self
         mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true)
         
-        directionManager = DirectionsManager(directions: self)
         
         var myDict: NSDictionary?
         if let path = NSBundle.mainBundle().pathForResource("AddressInfo", ofType: "plist") {
@@ -36,6 +38,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
             println(plistDict!)
             if (plistDict!["Address"] as String == "none"){
                 showIntroPage()
+            }
+            else {
+                homePoint = CLLocationCoordinate2D(latitude: plistDict!["Latitude"] as Double, longitude: plistDict!["Longitude"] as Double)
+                println(homePoint)
+                homeAddress = plistDict!["Address"] as? String
+                self.directionManager = DirectionsManager(directions: self, homeLocation: homePoint!)
             }
         }
     }
@@ -78,6 +86,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     func showUberMessage(uberMessage: String) {
         //Show Error Dialog
         var alert = UIAlertController(title: "Uber", message: uberMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        
+        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+            return
+        })
+        alert.addAction(cancelAction)
+        
         var okAction = UIAlertAction(title: "Open Uber", style: UIAlertActionStyle.Default, handler: { action in
             // The only required property - pickupLocation
             var pickupLocation = CLLocationCoordinate2D(latitude: 47.6235481, longitude: -122.336212)
@@ -96,11 +110,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
             return
         })
         alert.addAction(okAction)
-        
-        var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
-            return
-        })
-        alert.addAction(cancelAction)
 
         self.presentViewController(alert, animated: true, completion: nil)
         
@@ -151,16 +160,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         var introPage1 = EAIntroPage()
         introPage1.title = "Welcome!"
         introPage1.desc = "Ever wish there was an easier way to find your way home from anywhere?"
+        introPage1.titlePositionY = 500
+        introPage1.descPositionY = 450
+
         introPage1.bgImage = UIImage(named: "nightcity")
         
         var introPage2 = EAIntroPage()
         introPage2.title = "We've got good news!"
-        introPage2.desc = "GetHome will help you find your way home from anywhere, all you need to do is open the app and we'll do the rest."
+        introPage2.desc = "Get Home will help you find your way home from anywhere, all you need to do is open the app and we'll do the rest."
+        introPage2.titlePositionY = 500
+        introPage2.descPositionY = 450
         introPage2.bgImage = UIImage(named: "budapest")
         
         var introPage3 = EAIntroPage()
         introPage3.title = "There's Even More!"
-        introPage3.desc = "We'll give you the option between driving or walking home, and you can even order an Uber home directly from the app. Remember to drink responsibly!"
+        introPage3.desc = "We'll give you the option between driving or walking home, and you can even order an Uber home directly from the app. Give it a whirl!"
         introPage3.bgImage = UIImage(named: "citystreet")
         
         var intro = EAIntroView(frame: self.view.bounds, andPages: [introPage1, introPage2, introPage3])
@@ -177,7 +191,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         var alert = UIAlertController(title: "Set your Home Address", message: nil, preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
         let locationTextField = alert.textFields?.last as UITextField
-        locationTextField.placeholder = "Enter Home Address"
+        
+        if (homeAddress == nil) {
+            locationTextField.placeholder = "Enter Home Address"
+        }
+        else {
+            locationTextField.placeholder = homeAddress
+        }
         alert.addAction(UIAlertAction(title: "Set", style: UIAlertActionStyle.Default, handler: { action in
             let homeAddress = locationTextField.text
             self.geocodeAddress(homeAddress)
@@ -190,7 +210,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         addressLookup.geocodeAddressString(address, completionHandler: {(placemarks, error)->Void in
             if (error == nil) {
                 let firstCoordinate: CLPlacemark = placemarks[0] as CLPlacemark
-                let homeCoordinate = firstCoordinate.location.coordinate
+                let homeCoordinate: CLLocationCoordinate2D = firstCoordinate.location.coordinate
                 println("Lat: " + "\(homeCoordinate.latitude)" + "\nLong: " + "\(homeCoordinate.longitude)")
                 self.plistDict!["Address"] = address
                 self.plistDict!["Latitude"] = Double(homeCoordinate.latitude)
@@ -198,6 +218,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
                 if let path = NSBundle.mainBundle().pathForResource("AddressInfo", ofType: "plist") {
                     self.plistDict?.writeToFile(path, atomically: true)
                     println(self.plistDict?)
+                    
+                    self.directionManager = DirectionsManager(directions: self, homeLocation: homeCoordinate)
                 }
             }
             else {

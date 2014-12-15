@@ -44,23 +44,6 @@
             </objects>
             <point key="canvasLocation" x="249" y="246"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="lGd-XB-z59">
-            <objects>
-                <viewController id="b9N-nX-yQF" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HFw-6a-ovD"/>
-                        <viewControllerLayoutGuide type="bottom" id="2co-Sv-vbw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="yWt-6A-k9b">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WUo-Ha-hld" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="appiconoutline" width="797" height="629"/>

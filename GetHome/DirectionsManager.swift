@@ -31,8 +31,9 @@ class DirectionsManager {
     
     let homePoint = CLLocationCoordinate2DMake(47.5069, 19.0456)
     
-    init(directions:DirectionsDelegate){
+    init(directions:DirectionsDelegate, homeLocation: CLLocationCoordinate2D){
         self.directionsDelegate = directions
+        self.homePoint = homeLocation
         locationHelper.startLocationUpdate()
     }
 
@@ -150,7 +151,7 @@ class DirectionsManager {
                 let priceEstimate = priceDataDict["estimate"] as String
                 var rideDuration = priceDataDict["duration"] as Int
                 rideDuration = rideDuration / 60
-                directionsDelegate.showUberMessage("Price Estimate: " + "\(priceEstimate)" + "\nRide Duration: " + "\(rideDuration)" + " minutes\n\n Open the Uber App on your phone to order a ride home")
+                directionsDelegate.showUberMessage("Price Estimate: " + "\(priceEstimate)" + "\nRide Duration: " + "\(rideDuration)" + " minutes\n\n Open the Uber App on your phone to order a ride home.")
             }
         }
         else {
