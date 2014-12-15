@@ -54,8 +54,10 @@ class DirectionsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedStep = routeSteps[indexPath.row]
-        self.performSegueWithIdentifier("showStepMap", sender: self)
+        if (indexPath.row != 0) {
+            selectedStep = routeSteps[indexPath.row]
+            self.performSegueWithIdentifier("showStepMap", sender: self)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {

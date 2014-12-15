@@ -12,7 +12,7 @@ import MapKit
 protocol DirectionsDelegate {
     func updateView(route: MKRoute)
     func showError(message: String)
-    func showUberMessage(message: String)
+    func showUberMessage(message: String, pickupLocation: CLLocationCoordinate2D, dropOffLocation: CLLocationCoordinate2D)
     func showProgress()
     func hideProgress()
 }
@@ -95,8 +95,6 @@ class DirectionsManager {
     func queryUberApi(currentLocation: CLLocationCoordinate2D, home: CLLocationCoordinate2D) {
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
-
-        
         
         var urlString = "https://api.uber.com/v1/estimates/price?server_token=" + uberServerKey
         urlString = urlString + "&start_latitude=" + "\(currentLocation.latitude)" + "&start_longitude=" + "\(currentLocation.longitude)"
@@ -150,8 +148,12 @@ class DirectionsManager {
                 let priceDataDict = pricesArray[0] as NSDictionary
                 let priceEstimate = priceDataDict["estimate"] as String
                 var rideDuration = priceDataDict["duration"] as Int
+                
+                let currentLocation = locationHelper.lastLocation?.coordinate
+
                 rideDuration = rideDuration / 60
-                directionsDelegate.showUberMessage("Price Estimate: " + "\(priceEstimate)" + "\nRide Duration: " + "\(rideDuration)" + " minutes\n\n Open the Uber App on your phone to order a ride home.")
+                let uberMessage = "\nPrice Estimate: " + "\(priceEstimate)" + "\nRide Duration: " + "\(rideDuration)" + " minutes\n\n Open the Uber App on your phone to order a ride home."
+                directionsDelegate.showUberMessage(uberMessage, pickupLocation: currentLocation!, dropOffLocation: homePoint)
             }
         }
         else {

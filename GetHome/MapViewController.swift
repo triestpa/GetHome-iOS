@@ -23,7 +23,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
     var plistDict: NSMutableDictionary?
     var homePoint: CLLocationCoordinate2D?
     var homeAddress: String?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,7 +82,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    func showUberMessage(uberMessage: String) {
+    func showUberMessage(uberMessage: String, pickupLocation: CLLocationCoordinate2D, dropOffLocation: CLLocationCoordinate2D) {
         //Show Error Dialog
         var alert = UIAlertController(title: "Uber", message: uberMessage, preferredStyle: UIAlertControllerStyle.Alert)
         
@@ -94,18 +93,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         
         var okAction = UIAlertAction(title: "Open Uber", style: UIAlertActionStyle.Default, handler: { action in
             // The only required property - pickupLocation
-            var pickupLocation = CLLocationCoordinate2D(latitude: 47.6235481, longitude: -122.336212)
-            
-            // Create an Uber instance
+            var pickupLocation = CLLocationCoordinate2D(latitude: pickupLocation.latitude, longitude: pickupLocation.longitude)
             var uber = UberHelper(pickupLocation: pickupLocation)
-            
-            // Set a few optional properties
-            uber.pickupNickname = "Code Fellows"
-            
-            uber.dropoffLocation = CLLocationCoordinate2D(latitude: 47.591351, longitude: -122.332271)
-            uber.dropoffNickname = "Safeco Field"
-            
-            // Let's do it!
+            uber.dropoffLocation = CLLocationCoordinate2D(latitude: pickupLocation.latitude, longitude: pickupLocation.longitude)
             uber.deepLink()
             return
         })
