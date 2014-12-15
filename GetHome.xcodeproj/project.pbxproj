@@ -19,6 +19,7 @@
 		CD78CC8F1A38B7F10055C98E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD78CC8E1A38B7F00055C98E /* Images.xcassets */; };
 		CD96A6321A3E217F0008539D /* StepMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD96A6311A3E217F0008539D /* StepMapViewController.swift */; };
 		CDBF8C5F1A3E41ED002E7FD8 /* AddressInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = CDBF8C5E1A3E41ED002E7FD8 /* AddressInfo.plist */; };
+		CDBF8C611A3E609D002E7FD8 /* UberHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDBF8C601A3E609D002E7FD8 /* UberHelper.swift */; };
 		DE96B3FBA93413E100A2F1D4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5E7269555F66FB29431E06B /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		CD78CC8E1A38B7F00055C98E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CD96A6311A3E217F0008539D /* StepMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepMapViewController.swift; sourceTree = "<group>"; };
 		CDBF8C5E1A3E41ED002E7FD8 /* AddressInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AddressInfo.plist; sourceTree = "<group>"; };
+		CDBF8C601A3E609D002E7FD8 /* UberHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UberHelper.swift; sourceTree = "<group>"; };
 		D061F1FF6C8B29C494E7A0D9 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 			children = (
 				CD0C08D41A2E425E00145508 /* AppDelegate.swift */,
 				CD0C08D61A2E425E00145508 /* MapViewController.swift */,
+				CDBF8C601A3E609D002E7FD8 /* UberHelper.swift */,
 				CD0C08D81A2E425F00145508 /* DirectionsTableViewController.swift */,
 				CD96A6311A3E217F0008539D /* StepMapViewController.swift */,
 				CD0C08F81A2E470200145508 /* LocationHelper.swift */,
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD0C08F91A2E470200145508 /* LocationHelper.swift in Sources */,
+				CDBF8C611A3E609D002E7FD8 /* UberHelper.swift in Sources */,
 				CD96A6321A3E217F0008539D /* StepMapViewController.swift in Sources */,
 				CD0C08D91A2E425F00145508 /* DirectionsTableViewController.swift in Sources */,
 				CD0C08D51A2E425E00145508 /* AppDelegate.swift in Sources */,

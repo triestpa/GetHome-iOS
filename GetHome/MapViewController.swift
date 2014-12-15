@@ -75,18 +75,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, DirectionsDelegate
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
+    func showUberMessage(uberMessage: String) {
+        //Show Error Dialog
+        var alert = UIAlertController(title: "Uber", message: uberMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        var okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: { action in
+            return
+        })
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        if UIApplication.sharedApplication().canOpenURL(<#url: NSURL#>)
+    }
+    
     func showOptions() {
         var optionsController = UIAlertController(title: "How Do You Want to Travel?",
             message: nil, preferredStyle: .Alert)
         
         var walkAction = UIAlertAction(title: "Walking", style: UIAlertActionStyle.Default, handler: { action in
-            self.directionManager?.getDirections(self.view, transport: MKDirectionsTransportType.Walking)
+            self.directionManager?.getDirections(MKDirectionsTransportType.Walking)
             return
             })
         optionsController.addAction(walkAction)
         
         var driveAction = UIAlertAction(title: "Driving", style: UIAlertActionStyle.Default, handler: { action in
-            self.directionManager?.getDirections(self.view, transport: MKDirectionsTransportType.Automobile)
+            self.directionManager?.getDirections(MKDirectionsTransportType.Automobile)
             return
             })
         optionsController.addAction(driveAction)

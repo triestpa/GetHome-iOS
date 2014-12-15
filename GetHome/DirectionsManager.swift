@@ -11,7 +11,8 @@ import MapKit
 
 protocol DirectionsDelegate {
     func updateView(route: MKRoute)
-    func showError(route: String)
+    func showError(message: String)
+    func showUberMessage(message: String)
     func showProgress()
     func hideProgress()
 }
@@ -28,6 +29,8 @@ class DirectionsManager {
     let uberServerKey = "KD1nRWopePlDo1KCi2_OJ8rxvPFG74nvljsc0bW7"
     var uberResponse: NSDictionary!
     
+    let homePoint = CLLocationCoordinate2DMake(47.5069, 19.0456)
+    
     init(directions:DirectionsDelegate){
         self.directionsDelegate = directions
         locationHelper.startLocationUpdate()
@@ -42,7 +45,7 @@ class DirectionsManager {
         }
     }
     
-    func getDirections(thisView: UIView, transport: MKDirectionsTransportType) {
+    func getDirections(transport: MKDirectionsTransportType) {
 
         if let currentLocation = locationHelper.lastLocation? {
             var point1 = MKPointAnnotation()
@@ -51,7 +54,7 @@ class DirectionsManager {
             point1.coordinate = currentLocation.coordinate
             point1.title = "Start"
             
-            point2.coordinate = CLLocationCoordinate2DMake(47.5069, 19.0456)
+            point2.coordinate = homePoint
             point2.title = "Home"
             var directionsRequest = MKDirectionsRequest()
             let markYou = MKPlacemark(coordinate: CLLocationCoordinate2DMake(point1.coordinate.latitude, point1.coordinate.longitude), addressDictionary: nil)
@@ -79,14 +82,24 @@ class DirectionsManager {
     }
     
     func findUber() {
-        queryUberApi(37.775818, longitude: -122.418028)
+        let currentLocation = locationHelper.lastLocation?.coordinate
+        if (currentLocation != nil) {
+            queryUberApi(currentLocation!, home: homePoint)
+        }
+        else {
+            self.directionsDelegate.showError("Could Not Find Current Location")
+        }
     }
     
-    func queryUberApi(latitude: Float, longitude: Float) {
+    func queryUberApi(currentLocation: CLLocationCoordinate2D, home: CLLocationCoordinate2D) {
         let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
         urlSession = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: NSOperationQueue.mainQueue())
 
-        var urlString = "https://api.uber.com/v1/products?server_token=" + uberServerKey + "&latitude=" + "\(latitude)" + "&longitude=" + "\(longitude)"
+        
+        
+        var urlString = "https://api.uber.com/v1/estimates/price?server_token=" + uberServerKey
+        urlString = urlString + "&start_latitude=" + "\(currentLocation.latitude)" + "&start_longitude=" + "\(currentLocation.longitude)"
+        urlString = urlString + "&end_latitude=" + "\(home.latitude)" + "&end_longitude=" + "\(home.longitude)"
         
         println(urlString)
         
@@ -132,8 +145,12 @@ class DirectionsManager {
                 directionsDelegate.showError(errorMessage)
             }
             else {
-                directionsDelegate.showError(self.uberResponse.description)
-                //read json
+                let pricesArray = uberResponse["prices"] as NSArray
+                let priceDataDict = pricesArray[0] as NSDictionary
+                let priceEstimate = priceDataDict["estimate"] as String
+                var rideDuration = priceDataDict["duration"] as Int
+                rideDuration = rideDuration / 60
+                directionsDelegate.showUberMessage("Price Estimate: " + "\(priceEstimate)" + "\nRide Duration: " + "\(rideDuration)" + " minutes\n\n Open the Uber App on your phone to order a ride home")
             }
         }
         else {
